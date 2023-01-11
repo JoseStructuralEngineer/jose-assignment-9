@@ -19,7 +19,7 @@ public class RecipeRepository implements ObjectRepository<Recipe> {
 
 
     public List<Recipe> findAll(String file) throws IOException {
-
+        recipeArrayList = new ArrayList<>();
         Reader in = new FileReader(file);
         Iterable<CSVRecord> records = CSVFormat.DEFAULT
                 .withDelimiter(',')

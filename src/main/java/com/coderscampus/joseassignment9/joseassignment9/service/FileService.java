@@ -21,9 +21,9 @@ public class FileService {
 
    @Autowired
    private RecipeRepository recipeRepository;
-    private String fileName;
+    private final String fileName;
 
-    public FileService(String fileName) throws IOException {
+    public FileService(String fileName)  {
         this.fileName = fileName;
     }
 
@@ -48,7 +48,7 @@ public class FileService {
 
         List<Recipe> recipeArrayList = recipeRepository.recipeArrayList;
         //Since we have vegan and gluten free I added this filter
-        return recipeArrayList.stream().filter(e -> e.getGlutenFree().equals(false) && e.getVegan().equals(true)).collect(Collectors.toList());
+        return recipeArrayList.stream().filter(e -> e.getVegan().equals(true)).collect(Collectors.toList());
     }
 
     public List<Recipe> getVeganAndGlutenFree () throws IOException {
